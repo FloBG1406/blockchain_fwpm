@@ -10,12 +10,16 @@ public class Main {
     public static void main(String[] args){
 
         String json = "{\"name\": \"hendrik\"}";
+        //String json = "";
         logger.info("Application starts..");
         System.out.println(getNameFromJson(json));
         logger.info("Name: {}", getNameFromJson(json));
     }
 
     public static String getNameFromJson(String json){
+        if(json == null) {
+            throw new NullPointerException("Json ist null");
+        }
         JsonParser parser = new JsonParser();
         JsonElement element = parser.parse(json);
         JsonObject object = element.getAsJsonObject();
